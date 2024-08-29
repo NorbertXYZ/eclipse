@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='osgi.bundle' id='org.eclipse.core.filesystem.linux.x86_64' version='1.2.400.v20220812-1420'>
+    <properties size='10'>
+      <property name='artifact.size' value='5605'/>
+      <property name='download.size' value='5605'/>
+      <property name='download.checksum.sha-512' value='03ffef7305c1dc76024b3870f683c6c42594ed96932d9b277010b71bf94b8928756193f5c9c051821ec78ebb83465fe06c07e94d5ec27fb441e8ac0163dd9f6c'/>
+      <property name='download.checksum.sha-1' value='0ff6fafe58969630b9ff6c8c42d202d5726f1648'/>
+      <property name='download.checksum.sha-256' value='36c555eb4ea3a40f43dd521c8077b9b79d3df7b109dc784747ef2da9c57abb06'/>
+      <property name='maven-groupId' value='org.eclipse.platform'/>
+      <property name='maven-artifactId' value='org.eclipse.core.filesystem.linux.x86_64'/>
+      <property name='maven-version' value='1.2.400-SNAPSHOT'/>
+      <property name='maven-type' value='eclipse-plugin'/>
+      <property name='download.stats' value='org.eclipse.core.filesystem.linux.x86_64/1.2.400.v20220812-1420'/>
+    </properties>
+  </artifact>
+</artifacts>

@@ -83,13 +83,9 @@ ECLIPSE_RESULT=	eclipse.platform.releng.tychoeclipsebuilder/eclipse.platform.rep
 CFLAGS+=	-Wno-deprecated-non-prototype
 .endif
 
-# Add freebsd files and apply patches.  I know, this can be made "better" with
-# different patches for all the github downloads - but it works this way, too.
-pre-build:
-	cd ${WRKSRC} && ${TAR} --no-same-owner -xvzf ../../files/binaries.tgz
-	cd ${WRKSRC} && ${PATCH} < ../../files/eclipse.patches
+pre-patch:
+	cd ${WRKSRC} && ${CP} -R ../../files/addons/ .
 
-# Build the executable(s)
 do-build:
 	cd ${WRKSRC} && ${SETENV} ${MAVEN_ENV} mvn ${MAVEN_PARAMS}
 

@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %fragmentName
+Bundle-Vendor: %providerName
+Bundle-Localization: fragment
+Bundle-SymbolicName: org.eclipse.core.net.freebsd;singleton:=true
+Bundle-Version: 1.1.200.v20240413-1529
+Fragment-Host: org.eclipse.core.net;bundle-version="1.1.0"
+Eclipse-PlatformFilter: (osgi.os=freebsd)
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: org.eclipse.core.net.freebsd
+Require-Bundle: com.sun.jna
+Eclipse-SourceReferences: scm:git:https://github.com/eclipse-platform/ec
+ lipse.platform.git;path="team/bundles/org.eclipse.core.net.freebsd";tag="
+ I20240525-0630";commitId=abad786e40f493df8089c1e903bdb298ecf2917d
+

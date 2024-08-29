@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='2'>
+  <artifact classifier='osgi.bundle' id='org.eclipse.core.net.freebsd' version='1.1.200.v20240413-1529'>
+    <properties size='10'>
+      <property name='artifact.size' value='8812'/>
+      <property name='download.size' value='8812'/>
+      <property name='download.checksum.sha-512' value='ea4ac2d12ec2d9643fc0ebc893d14e22ff6b20f45eb178bb66765f45d2a5c6d92cb2941ef4aa648da95b6e6e5c73b73c3032291d959d58f94cd48cbb50d32bd4'/>
+      <property name='download.checksum.sha-1' value='5e5de7faf63f8ef15a428c4e7a52fbe7516e1454'/>
+      <property name='download.checksum.sha-256' value='091fcec04ccbed5415a3a32097b4095a60d77b11f02ab658f154feb9f7cb9e0b'/>
+      <property name='maven-groupId' value='org.eclipse.platform'/>
+      <property name='maven-artifactId' value='org.eclipse.core.net.freebsd'/>
+      <property name='maven-version' value='1.1.200-SNAPSHOT'/>
+      <property name='maven-type' value='eclipse-plugin'/>
+      <property name='download.stats' value='org.eclipse.core.net.freebsd/1.1.200.v20240413-1529'/>
+    </properties>
+  </artifact>
+  <artifact classifier='osgi.bundle' id='org.eclipse.core.net.freebsd.source' version='1.1.200.v20240413-1529'>
+    <properties size='11'>
+      <property name='artifact.size' value='5639'/>
+      <property name='download.size' value='5639'/>
+      <property name='download.checksum.sha-512' value='2d9bbf508b44224317cc50dbdced504f39c14d109d1b8238b99277ec59b63983af6768b0bfbc9ab87d364ad84316f4f572f5b27e77ab4318f2e9b7520e491d2d'/>
+      <property name='download.checksum.sha-1' value='cd70e5229eddcc6ca33dd9506404d87cb5f3acc4'/>
+      <property name='download.checksum.sha-256' value='41d32d5cf75cad686c5bc19a135617e86eaddd06ccdbdf53b991ba33e442a8e6'/>
+      <property name='maven-groupId' value='org.eclipse.platform'/>
+      <property name='maven-artifactId' value='org.eclipse.core.net.freebsd'/>
+      <property name='maven-version' value='1.1.200-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources'/>
+      <property name='maven-type' value='java-source'/>
+      <property name='download.stats' value='org.eclipse.core.net.freebsd.source/1.1.200.v20240413-1529'/>
+    </properties>
+  </artifact>
+</artifacts>
