@@ -12,8 +12,9 @@ I hope you have benefit with this all and fun running eclipse on FreeBSD :-)
 
 To proceed with the build process, I took x86_64 as the architecture, instead of amd64, which is used by FreeBSD.  With x86_64 the build process was done sucesfully, otherwise it stopped always near the end.
 
-for building eclipse you need: the packages: openjdk17 maven39 gmake, alongside with: git py311-setuptools pkgconf libsecret bsddialog webkit2-gtk3 bison
+For running eclipse, you need the package openjdk17 to be installed.
 
+For building eclipse you need the packages: openjdk17 maven39 gmake git py311-setuptools pkgconf libsecret bsddialog webkit2-gtk3 bison
 
 ## Manual build
 
