@@ -86,7 +86,7 @@ CFLAGS+=	-Wno-deprecated-non-prototype
 # Add freebsd files and apply patches.  I know, this can be made "better" with
 # different patches for all the github downloads - but it works this way, too.
 pre-build:
-	cd ${WRKSRC} && ${TAR} --no-same-owner -xvzf../../files/binaries.tgz
+	cd ${WRKSRC} && ${TAR} --no-same-owner -xvzf ../../files/binaries.tgz
 	cd ${WRKSRC} && ${PATCH} < ../../files/eclipse.patches
 
 # Build the executable(s)
