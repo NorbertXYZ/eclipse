@@ -16,7 +16,15 @@ For running eclipse, you need the package openjdk17 to be installed.
 
 For building eclipse you need the packages: openjdk17 maven39 gmake git py311-setuptools pkgconf libsecret bsddialog webkit2-gtk3 bison
 
+## Using ports
+
+So today I could make a successfull build of the port - at least with a "fake" port called eclipse-4.32 which I created in /usr/ports/java and which run successfully.  I extracted the content of the folder port and run: "make; make install".
+
+There may be small adaptations neccessary - e.g. I put all patches in 1 file.  But it was more conveniant for me.
+
 ## Manual build
+
+This may not be the sugested method anymore :-)
 
 A simple way is to build the eclipse application is a "manual" build.  Download the file manual.tgz, then untar it in a folder and call
 
@@ -29,9 +37,3 @@ eclipse.platform.releng.aggregator/eclipse.platform.releng.tychoeclipsebuilder/e
 By default (I think most people run FreeBSD on Intel or AMD platforms) - take the file org.eclipse.platform.ide-freebsd.gtk.x86_64.tar.gz und untar it in a folder of your choice.  You will get a binary executable eclipse/eclipse.  Adjust your PATH settings, so eclipse can be called on command line, whenever you want.
 
 It should be noted, that a "meven" folder will be created, too.  If everything went fine, delete the build folder, this frees a lot of storage!
-
-## Using ports
-
-So today I could make a successfull build of the port - at least with a "fake" port called eclipse-4.32 which I created in /usr/ports/java and which run successfully.  I extracted the content of the folder port and run: "make; make install".
-
-There may be small adaptations neccessary - e.g. I put all patches in 1 file.  But it was more conveniant for me.
