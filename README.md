@@ -33,4 +33,4 @@ It should be noted, that a "meven" folder will be created, too.  If everything w
 
 So today I could make a successfull build of the port - at least with a "fake" port called eclipse-4.32 which I created in /usr/ports/java and which run successfully.  I extracted the file port.tgz and run: "make; make install".
 
-There may be small adaptations neccessary - e.g. I put add patches in 1 file.  But it was more conveniant for me.
+There may be small adaptations neccessary - e.g. I put all patches in 1 file.  But it was more conveniant for me.
