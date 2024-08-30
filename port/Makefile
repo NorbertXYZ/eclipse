@@ -84,7 +84,7 @@ CFLAGS+=	-Wno-deprecated-non-prototype
 .endif
 
 pre-patch:
-	cd ${WRKSRC} && ${CP} -R ../../files/addons/ .
+	cd ${WRKSRC} && ${CP} -R ${FILESDIR}/addons/ .
 
 do-build:
 	cd ${WRKSRC} && ${SETENV} ${MAVEN_ENV} mvn ${MAVEN_PARAMS}
