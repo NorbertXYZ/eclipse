@@ -1,6 +1,6 @@
 # eclipse running on FreeBSD
 
-First of all: eclipse has (sadly) not considered other operating system as Apple, Windows and Linux.  Yes, they are mostly used, but if you look over the edge of the plate, there as also BSD system like FreeBSD, OpenBSD and NetBSD, along with Opensolaris systems like Illumnos and OmniOS, and others.  Many of this systems are very stable and can be used on daily basis.
+First of all: eclipse has (sadly) not considered other operating system as Apple, Windows and Linux.  Yes, they are mostly used, but if you look over the edge of the plate, there as also BSD system like FreeBSD, OpenBSD and NetBSD, along with Opensolaris systems like Illumnos and OmniOS, and others.  Many of this systems are very stable and can be used on daily basis, too.
 
 This port is focussed on FreeBSD and eclipse.  It will be the source for (1) a manual compilations as also for (2) integration in the "ports" system of FreeBSD.  And yes, there are some patches to be made, alongside with additional files.  But overall the changes are not huge, they just took a lot of hours to be made.
 
