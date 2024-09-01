@@ -1,62 +1,55 @@
 PORTNAME=	eclipse
-PORTVERSION=	4.32
-PORTREVISION=	0
+DISTVERSION=	4.32
 CATEGORIES=	java devel
 ECLIPSE_TAG=	R4_32
 
 DIST_SUBDIR=	${PORTNAME}
 
-MAINTAINER=	ports@FreeBSD.org
-COMMENT=	Eclipse IDE 2024-06
-WWW=	https://www.eclipse.org/
+MAINTAINER=	ngrundmann@gmx.de
+COMMENT=	Eclipse IDE
+WWW=		https://www.eclipse.org/
 
 LICENSE=	EPL
 
 ONLY_FOR_ARCHS=	aarch64 amd64 powerpc64 powerpc64le
 
-BUILD_DEPENDS= \
-	git:devel/git@lite \
-	mvn:devel/maven39 \
-	zip:archivers/zip
+BUILD_DEPENDS=	git:devel/git \
+		mvn:devel/maven39 \
+		zip:archivers/zip
 
-LIB_DEPENDS= \
-	libsecret-1.so:security/libsecret \
-	libwebkit2gtk-4.0.so:www/webkit2-gtk3
+LIB_DEPENDS=	libsecret-1.so:security/libsecret \
+		libwebkit2gtk-4.0.so:www/webkit2-gtk3
 
-USE_JAVA=	17+
-
-USES=	compiler:c++17-lang gmake pkgconfig gnome
-USE_GNOME=	gtk30
-
-PORTSCOUT=	ignore:1
+USES=		compiler:c++17-lang gmake pkgconfig gnome
 
 # The github repositories.  The repository under NorbertXYZ is for a predefined maven
 # download, so the build does not need to download while do-build is running
 USE_GITHUB=	yes
-GH_TUPLE= \
-	eclipse-platform:eclipse.platform.releng.aggregator:${ECLIPSE_TAG} \
-	eclipse-jdt:eclipse.jdt:${ECLIPSE_TAG}:a/eclipse.jdt \
-	eclipse-jdt:eclipse.jdt.core:${ECLIPSE_TAG}:b/eclipse.jdt.core \
-	eclipse-jdt:eclipse.jdt.core.binaries:${ECLIPSE_TAG}:c/eclipse.jdt.core.binaries \
-	eclipse-jdt:eclipse.jdt.debug:${ECLIPSE_TAG}:d/eclipse.jdt.debug \
-	eclipse-jdt:eclipse.jdt.ui:${ECLIPSE_TAG}:e/eclipse.jdt.ui \
-	eclipse-pde:eclipse.pde:${ECLIPSE_TAG}:f/eclipse.pde \
-	eclipse-platform:eclipse.platform:${ECLIPSE_TAG}:g/eclipse.platform \
-	eclipse-platform:eclipse.platform.runtime:fd42b6e331:h/eclipse.platform.runtime \
-	eclipse-platform:eclipse.platform.swt:${ECLIPSE_TAG}:i/eclipse.platform.swt \
-	eclipse-platform:eclipse.platform.ui:${ECLIPSE_TAG}:j/eclipse.platform.ui \
-	eclipse-equinox:equinox:${ECLIPSE_TAG}:k/equinox \
-	eclipse-equinox:equinox.binaries:${ECLIPSE_TAG}:l/rt.equinox.binaries \
-	eclipse-equinox:p2:${ECLIPSE_TAG}:m/rt.equinox.p2 \
-	NorbertXYZ:eclipse-maven:${PORTVERSION}:n
+GH_TUPLE=	eclipse-platform:eclipse.platform.releng.aggregator:${ECLIPSE_TAG} \
+		eclipse-jdt:eclipse.jdt:${ECLIPSE_TAG}:a/eclipse.jdt \
+		eclipse-jdt:eclipse.jdt.core:${ECLIPSE_TAG}:b/eclipse.jdt.core \
+		eclipse-jdt:eclipse.jdt.core.binaries:${ECLIPSE_TAG}:c/eclipse.jdt.core.binaries \
+		eclipse-jdt:eclipse.jdt.debug:${ECLIPSE_TAG}:d/eclipse.jdt.debug \
+		eclipse-jdt:eclipse.jdt.ui:${ECLIPSE_TAG}:e/eclipse.jdt.ui \
+		eclipse-pde:eclipse.pde:${ECLIPSE_TAG}:f/eclipse.pde \
+		eclipse-platform:eclipse.platform:${ECLIPSE_TAG}:g/eclipse.platform \
+		eclipse-platform:eclipse.platform.runtime:fd42b6e331:h/eclipse.platform.runtime \
+		eclipse-platform:eclipse.platform.swt:${ECLIPSE_TAG}:i/eclipse.platform.swt \
+		eclipse-platform:eclipse.platform.ui:${ECLIPSE_TAG}:j/eclipse.platform.ui \
+		eclipse-equinox:equinox:${ECLIPSE_TAG}:k/equinox \
+		eclipse-equinox:equinox.binaries:${ECLIPSE_TAG}:l/rt.equinox.binaries \
+		eclipse-equinox:p2:${ECLIPSE_TAG}:m/rt.equinox.p2 \
+		NorbertXYZ:eclipse-maven:${DISTVERSION}:n
+USE_GNOME=	gtk30
+USE_JAVA=	17+
 
-DESKTOP_ENTRIES="Eclipse" \
-	"${COMMENT}" \
-	"${PORTNAME}" \
-	"${PORTNAME}" \
-	"Development;IDE;Java;" \
-	"false"
-
+DESKTOP_ENTRIES=	"Eclipse" \
+			"${COMMENT}" \
+			"${PORTNAME}" \
+			"${PORTNAME}" \
+			"Development;IDE;Java;" \
+			"false"
+PORTSCOUT=	ignore:1
 SUB_FILES=	${PORTNAME}
 
 .include <bsd.port.pre.mk>
@@ -71,11 +64,10 @@ MAVEN_ARCH=	x86_64
 MAVEN_ARCH=	${ARCH}
 .endif
 
-MAVEN_PARAMS= \
-	--offline \
-	-Dmaven.repo.local=${WRKDIR}/eclipse-maven-${PORTVERSION}  \
-	-Dnative=gtk.freebsd.${MAVEN_ARCH} \
-	-DskipTests clean verify
+MAVEN_PARAMS=	--offline \
+		-Dmaven.repo.local=${WRKDIR}/eclipse-maven-${DISTVERSION} \
+		-Dnative=gtk.freebsd.${MAVEN_ARCH} \
+		-DskipTests clean verify
 
 ECLIPSE_RESULT=	eclipse.platform.releng.tychoeclipsebuilder/eclipse.platform.repository/target/products/org.eclipse.sdk.ide-freebsd.gtk.${MAVEN_ARCH}.tar.gz
 
@@ -83,8 +75,26 @@ ECLIPSE_RESULT=	eclipse.platform.releng.tychoeclipsebuilder/eclipse.platform.rep
 CFLAGS+=	-Wno-deprecated-non-prototype
 .endif
 
+# Directories needed, but cannot be stored in gtihub, because they are empty
+EMPTY_DIRS=	eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.aarch64/os/freebsd/aarch64 \
+		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.aarch64/target \
+		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.powerpc64/os/freebsd/powerpc64 \
+		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.powerpc64/target \
+		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.powerpc64le/os/freebsd/powerpc64le \
+		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.powerpc64le/target \
+		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.x86_64/os/freebsd/x86_64 \
+		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.x86_64/target \
+		eclipse.platform/team/bundles/org.eclipse.core.net.freebsd/target \
+		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.aarch64 \
+		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.powerpc64 \
+		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.powerpc64le \
+		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.x86_64
+
 pre-patch:
 	cd ${WRKSRC} && ${CP} -R ${FILESDIR}/addons/ .
+.for DIR in ${EMPTY_DIRS}
+	${MKDIR} -p ${WRKSRC}/${DIR}
+.endfor
 
 do-build:
 	cd ${WRKSRC} && ${SETENV} ${MAVEN_ENV} mvn ${MAVEN_PARAMS}
