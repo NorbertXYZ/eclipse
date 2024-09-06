@@ -58,11 +58,7 @@ MAVEN_ENV=	MAVEN_OPTS=-Xmx2048m CC=${CC} CFLAGS="${CFLAGS}" JAVA_HOME=${JAVA_HOM
 
 # To make the build working, set the (maven) architecture to x86_64 instead of amd64
 # Finally there are problems with amd64
-.if ${ARCH} == amd64
-MAVEN_ARCH=	x86_64
-.else
-MAVEN_ARCH=	${ARCH}
-.endif
+MAVEN_ARCH=	${ARCH:S|amd64|x86_64|}
 
 MAVEN_PARAMS=	--offline \
 		-Dmaven.repo.local=${WRKDIR}/eclipse-maven-${DISTVERSION} \
@@ -76,24 +72,17 @@ CFLAGS+=	-Wno-deprecated-non-prototype
 .endif
 
 # Directories needed, but cannot be stored in gtihub, because they are empty
-EMPTY_DIRS=	eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.aarch64/os/freebsd/aarch64 \
-		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.aarch64/target \
-		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.powerpc64/os/freebsd/powerpc64 \
-		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.powerpc64/target \
-		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.powerpc64le/os/freebsd/powerpc64le \
-		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.powerpc64le/target \
-		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.x86_64/os/freebsd/x86_64 \
-		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.x86_64/target \
+EMPTY_DIRS=	eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.%%ARCH%%/os/freebsd/%%ARCH%% \
+		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.%%ARCH%%/target \
 		eclipse.platform/team/bundles/org.eclipse.core.net.freebsd/target \
-		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.aarch64 \
-		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.powerpc64 \
-		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.powerpc64le \
-		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.x86_64
+		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.%%ARCH%%
 
 pre-patch:
 	cd ${WRKSRC} && ${CP} -R ${FILESDIR}/addons/ .
 .for DIR in ${EMPTY_DIRS}
-	${MKDIR} -p ${WRKSRC}/${DIR}
+. for _ARCH in aarch64 powerpc64 powerpc64le x86_64
+	${MKDIR} -p ${WRKSRC}/${DIR:S|%%ARCH%%|${_ARCH}|g}
+. endfor
 .endfor
 
 do-build:
