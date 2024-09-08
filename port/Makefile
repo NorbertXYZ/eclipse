@@ -75,8 +75,7 @@ CFLAGS+=	-Wno-deprecated-non-prototype
 EMPTY_DIRS=	eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.%%ARCH%%/os/freebsd/%%ARCH%% \
 		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.%%ARCH%%/target \
 		eclipse.platform/team/bundles/org.eclipse.core.net.freebsd/target \
-		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.%%ARCH%% \
-		rt.equinox.binaries/org.eclipse.equinox.executable/bin/gtk/freebsd/%%ARCH%%
+		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.%%ARCH%%
 
 pre-patch:
 	cd ${WRKSRC} && ${CP} -R ${FILESDIR}/addons/ .
