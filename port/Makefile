@@ -1,7 +1,7 @@
 PORTNAME=	eclipse
 DISTVERSION=	4.32
 CATEGORIES=	java devel
-ECLIPSE_TAG=	R4_32
+ECLIPSE_TAG=	R${DISTVERSION:S|.|_|g}
 
 DIST_SUBDIR=	${PORTNAME}
 
@@ -71,17 +71,19 @@ ECLIPSE_RESULT=	eclipse.platform.releng.tychoeclipsebuilder/eclipse.platform.rep
 CFLAGS+=	-Wno-deprecated-non-prototype
 .endif
 
-# Directories needed, but cannot be stored in gtihub, because they are empty
+# Directories needed, but cannot be stored in git, because they are empty
 EMPTY_DIRS=	eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.%%ARCH%%/os/freebsd/%%ARCH%% \
 		eclipse.platform/resources/bundles/org.eclipse.core.filesystem.freebsd.%%ARCH%%/target \
 		eclipse.platform/team/bundles/org.eclipse.core.net.freebsd/target \
+		rt.equinox.binaries/org.eclipse.equinox.executable/bin/gtk/freebsd/%%ARCH%% \
 		rt.equinox.binaries/org.eclipse.equinox.launcher.gtk.freebsd.%%ARCH%%
 
 pre-patch:
-	cd ${WRKSRC} && ${CP} -R ${FILESDIR}/addons/ .
+	${CP} -R ${FILESDIR}/addons/ ${WRKSRC}
 .for DIR in ${EMPTY_DIRS}
 . for _ARCH in aarch64 powerpc64 powerpc64le x86_64
-	${MKDIR} -p ${WRKSRC}/${DIR:S|%%ARCH%%|${_ARCH}|g}
+	${MKDIR} ${WRKSRC}/${DIR:S|%%ARCH%%|${_ARCH}|g}
+	${TOUCH} ${WRKSRC}/${DIR:S|%%ARCH%%|${_ARCH}|g}/.empty
 . endfor
 .endfor
 
