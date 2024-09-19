@@ -11,7 +11,7 @@ WWW=		https://www.eclipse.org/
 
 LICENSE=	EPL
 
-ONLY_FOR_ARCHS=	amd64
+ONLY_FOR_ARCHS=	aarch64 amd64 powerpc64 powerpc64le
 
 BUILD_DEPENDS=	git:devel/git \
 		mvn:devel/maven39 \
