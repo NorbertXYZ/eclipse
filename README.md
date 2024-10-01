@@ -23,18 +23,18 @@ For building eclipse you need the packages: openjdk17 maven39 gmake git py311-se
 The folder port-release (where repelase is the eclipse release) contains the portfiles.  Usually it should be used by something like "portsnap" or over the "pkg install".  But it is also possible to build it in a new folder like /usr/ports/java/eclipse-release folder, by copying the content of the port-release into and run
 
 > make makesum
-> make
-> make install
+make
+make install
 
 or you use the ports data
 
 > cd /usr/ports/java/eclipse
-> make
-> make install
+make
+make install
 
 or you use (when the new version appears)
 
-> port install eclipse
+> pkg install eclipse
 
 
 ## Manual build
