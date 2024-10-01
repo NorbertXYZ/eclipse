@@ -8,6 +8,7 @@ But why did I do it?  There are also other development environments available.  
 
 I hope you have benefit with this all and fun running eclipse on FreeBSD :-)
 
+
 ## Remarks
 
 To proceed with the build process, I took x86_64 as the architecture, instead of amd64, which is used by FreeBSD.  With x86_64 the build process was done sucesfully, otherwise it stopped always near the end.
@@ -16,15 +17,29 @@ For running eclipse, you need the package openjdk17 to be installed.
 
 For building eclipse you need the packages: openjdk17 maven39 gmake git py311-setuptools pkgconf libsecret bsddialog webkit2-gtk3 bison
 
+
 ## Using ports
 
-So today I could make a successfull build of the port - at least with a "fake" port called eclipse-4.32 which I created in /usr/ports/java and which run successfully.  I extracted the content of the folder port and run: "make; make install".
+The folder port-release (where repelase is the eclipse release) contains the portfiles.  Usually it should be used by something like "portsnap" or over the "pkg install".  But it is also possible to build it in a new folder like /usr/ports/java/eclipse-release folder, by copying the content of the port-release into and run
 
-There may be small adaptations neccessary - e.g. I put all patches in 1 file.  But it was more conveniant for me.
+> make makesum
+> make
+> make install
+
+or you use the ports data
+
+> cd /usr/ports/java/eclipse
+> make
+> make install
+
+or you use (when the new version appears)
+
+> port install eclipse
+
 
 ## Manual build
 
-This may not be the sugested method anymore :-)
+A munaul build is outdated, but I leave it inside :-)
 
 A simple way is to build the eclipse application is a "manual" build.  Download the file manual.tgz, then untar it in a folder and call
 
